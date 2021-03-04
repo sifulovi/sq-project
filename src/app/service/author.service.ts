@@ -35,7 +35,6 @@ export class AuthorService {
     if (storedNames === null) {
       localStorage.setItem('favoriteAuthor', JSON.stringify([]));
     }
-    console.log(`sdfsfsdf ${storedNames}`);
   }
 
   getFavoriteAuthList(): any {

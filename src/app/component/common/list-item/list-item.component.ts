@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthorService} from '../../../service/author.service';
 import {AuthorModel} from '../../../model/author.model';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-list-item',
@@ -14,10 +15,11 @@ export class ListItemComponent implements OnInit {
 
   authorList: AuthorModel[] = [];
   isDataLoading = true;
-
   pageNo = 0;
 
-  constructor(private authorService: AuthorService) {
+  constructor(
+    private authorService: AuthorService,
+    private notification: NzNotificationService) {
   }
 
   ngOnInit(): void {
@@ -29,10 +31,13 @@ export class ListItemComponent implements OnInit {
     }
   }
 
-
   addFavoriteAuthor(payload: AuthorModel): void {
     this.isDataLoading = true;
     this.authorService.addFavoriteAuthor(payload);
+    const message = ' A Author is added in favorite list!';
+    this.createNotification('success', message);
+    this.authorListData();
+
   }
 
   authorListData(): void {
@@ -42,19 +47,16 @@ export class ListItemComponent implements OnInit {
         res.results.map(
           item => {
             const data = this.authorService.getFavoriteAuthList();
-            const getfavAuthor = data.find(i => i._id === item._id);
-            if (getfavAuthor) {
-              this.authorList.push(getfavAuthor);
+            const getFavAuthor = data.find(i => i._id === item._id);
+            if (getFavAuthor) {
+              this.authorList.push(getFavAuthor);
             } else {
               this.authorList.push(item);
             }
           }
         );
-
-        //
-        // this.authorList = res.results as AuthorModel[];
       },
-      err => {
+      () => {
         this.isDataLoading = false;
       }
     );
@@ -67,16 +69,15 @@ export class ListItemComponent implements OnInit {
   }
 
   deleteFavoriteAuthor(payload: AuthorModel): void {
-    this.isDataLoading = true;
-    const asd = this.authorService.deleteFavoriteAuthor(payload);
-    console.log(asd);
+    this.authorService.deleteFavoriteAuthor(payload);
     this.ngOnInit();
+    const message = 'A Author is deleted from favorite list!';
+    this.createNotification('error', message);
   }
 
   nextPage(): void {
     this.pageNo++;
     this.authorListData();
-
   }
 
   previousPage(): void {
@@ -84,7 +85,10 @@ export class ListItemComponent implements OnInit {
       this.pageNo--;
       this.authorListData();
     }
+  }
 
+  createNotification(type: string, message: string): void {
+    this.notification.create(type, message, '');
   }
 
 }

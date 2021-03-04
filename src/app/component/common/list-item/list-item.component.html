@@ -1,6 +1,4 @@
 <nz-content>
-  <p>list-item works! {{componentName}}</p>
-
   <div class="custom-content" *ngIf="authorList?.length > 0 else noData">
     <nz-card class="custom-card" *ngFor="let author of authorList" [nzBordered]="false" nzTitle='{{author?.name}}'
              [nzExtra]="extraTemplate">
