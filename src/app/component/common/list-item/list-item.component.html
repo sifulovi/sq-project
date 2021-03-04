@@ -29,5 +29,11 @@
     </nz-empty>
   </ng-template>
 
-
+  <div *ngIf="componentName=== 'Authors'" class="pagination">
+    <i (click)="previousPage()" nz-icon nzType="left" nzTheme="outline"></i>
+    &nbsp;&nbsp;
+    page :  {{pageNo}}
+    &nbsp;&nbsp;
+    <i (click)="nextPage()" nz-icon nzType="right" nzTheme="outline"></i>
+  </div>
 </nz-content>

@@ -12,8 +12,9 @@ export class AuthorService {
   constructor(private http: HttpClient) {
   }
 
-  getAuthorList(): any {
-    return this.http.get(`${this.API_URL}?limit=10&skip=20`);
+  getAuthorList(skipSize): any {
+    skipSize = skipSize * 10;
+    return this.http.get(`${this.API_URL}?limit=10&skip=${skipSize}`);
   }
 
   addFavoriteAuthor(payload: AuthorModel): void {

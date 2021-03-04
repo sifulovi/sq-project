@@ -15,6 +15,8 @@ export class ListItemComponent implements OnInit {
   authorList: AuthorModel[] = [];
   isDataLoading = true;
 
+  pageNo = 0;
+
   constructor(private authorService: AuthorService) {
   }
 
@@ -34,7 +36,8 @@ export class ListItemComponent implements OnInit {
   }
 
   authorListData(): void {
-    this.authorService.getAuthorList().subscribe(
+    this.authorList = [];
+    this.authorService.getAuthorList(this.pageNo).subscribe(
       res => {
         res.results.map(
           item => {
@@ -64,10 +67,24 @@ export class ListItemComponent implements OnInit {
   }
 
   deleteFavoriteAuthor(payload: AuthorModel): void {
-    debugger
     this.isDataLoading = true;
     const asd = this.authorService.deleteFavoriteAuthor(payload);
     console.log(asd);
     this.ngOnInit();
   }
+
+  nextPage(): void {
+    this.pageNo++;
+    this.authorListData();
+
+  }
+
+  previousPage(): void {
+    if (this.pageNo > 0) {
+      this.pageNo--;
+      this.authorListData();
+    }
+
+  }
+
 }
