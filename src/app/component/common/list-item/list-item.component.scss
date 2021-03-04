@@ -1,6 +1,6 @@
 .custom-content {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   text-align: center;
   margin: auto;
   flex-wrap: wrap;
@@ -9,7 +9,7 @@
 .custom-card {
   margin: 10px;
   min-width: 300px;
-  max-width: 400px;
+  max-width: 450px;
   position: relative;
 
 /*  .custom-link {

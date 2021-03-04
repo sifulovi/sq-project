@@ -23,9 +23,9 @@ export class AuthorService {
     localStorage.setItem('favoriteAuthor', JSON.stringify(storedNames));
   }
 
-  deleteFavoriteAuthor(id): void {
+  deleteFavoriteAuthor(payload: AuthorModel): void {
     const storedNames = JSON.parse(localStorage.getItem('favoriteAuthor'));
-    const newFavData = storedNames.filter(asd => asd._id !== id);
+    const newFavData = storedNames.filter(asd => asd._id !== payload._id);
     localStorage.setItem('favoriteAuthor', JSON.stringify(newFavData));
   }
 

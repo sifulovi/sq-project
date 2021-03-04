@@ -7,11 +7,11 @@
       <p style="text-align: justify;
   text-justify: inter-word;">{{author?.bio}}</p>
 
-      <p class="custom-link">For more details click <a href="{{author?.link}}">here</a></p>
+      <p class="custom-link">For more details click <a href="{{author?.link}}" target='_blank'>here</a></p>
 
       <ng-template #extraTemplate>
         <a (click)="addFavoriteAuthor(author)" *ngIf="!author.isFavorite ">Add favorite</a>
-        <a (click)="deleteFavoriteAuthor(author._id)" *ngIf="author.isFavorite">Remove</a>
+        <a (click)="deleteFavoriteAuthor(author)" *ngIf="author.isFavorite">Remove</a>
       </ng-template>
     </nz-card>
 

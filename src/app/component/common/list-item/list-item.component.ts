@@ -19,6 +19,7 @@ export class ListItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authorList = [];
     if (this.componentName === 'Authors') {
       this.authorListData();
     } else {
@@ -28,14 +29,27 @@ export class ListItemComponent implements OnInit {
 
 
   addFavoriteAuthor(payload: AuthorModel): void {
+    this.isDataLoading = true;
     this.authorService.addFavoriteAuthor(payload);
   }
 
   authorListData(): void {
     this.authorService.getAuthorList().subscribe(
       res => {
-        console.log(res);
-        this.authorList = res.results as AuthorModel[];
+        res.results.map(
+          item => {
+            const data = this.authorService.getFavoriteAuthList();
+            const getfavAuthor = data.find(i => i._id === item._id);
+            if (getfavAuthor) {
+              this.authorList.push(getfavAuthor);
+            } else {
+              this.authorList.push(item);
+            }
+          }
+        );
+
+        //
+        // this.authorList = res.results as AuthorModel[];
       },
       err => {
         this.isDataLoading = false;
@@ -44,13 +58,16 @@ export class ListItemComponent implements OnInit {
   }
 
   favoriteAuthorList(): void {
-    const data = this.authorService.getFavoriteAuthList();
+    const data = this.authorService.getFavoriteAuthList() as AuthorModel[];
     this.authorList = data;
     console.log(`sfsdf ${data}`);
   }
 
-  deleteFavoriteAuthor(id): void {
-    this.authorService.deleteFavoriteAuthor(id);
-    this.favoriteAuthorList();
+  deleteFavoriteAuthor(payload: AuthorModel): void {
+    debugger
+    this.isDataLoading = true;
+    const asd = this.authorService.deleteFavoriteAuthor(payload);
+    console.log(asd);
+    this.ngOnInit();
   }
 }
