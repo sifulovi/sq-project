@@ -1,0 +1,22 @@
+.custom-content {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.custom-card {
+  margin: 10px;
+  min-width: 300px;
+  max-width: 400px;
+  position: relative;
+
+/*  .custom-link {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    min-top: 240px;
+  }*/
+
+}

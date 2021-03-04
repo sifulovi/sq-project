@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AuthorService} from '../../../service/author.service';
 
 @Component({
   selector: 'app-list-item',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  componentName: string;
+
+  authorList: [];
+
+  constructor(private authorService: AuthorService) {
+  }
 
   ngOnInit(): void {
+
+    this.authorService.getAuthorList().subscribe(
+      res => {
+        console.log(res);
+        this.authorList = res.results;
+      },
+      err => {
+        console.log('err');
+      }
+    );
     console.log('asdasdsad');
   }
 

@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {ListItemComponent} from '../common/list-item/list-item.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AuthorComponent} from './author/author.component';
 
 const routes: Routes = [

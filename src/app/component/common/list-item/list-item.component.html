@@ -1,1 +1,15 @@
-<p>list-item works!</p>
+<p>list-item works! {{componentName}}</p>
+
+<div class="custom-content">
+  <nz-card class="custom-card" *ngFor="let author of authorList" [nzBordered]="false" nzTitle='{{author?.name}}'
+           [nzExtra]="extraTemplate">
+    <p style="text-align: justify;
+  text-justify: inter-word;">{{author?.bio}}</p>
+
+    <p class="custom-link">For more details click <a href="{{author.link}}">here</a></p>
+
+  </nz-card>
+</div>
+<ng-template #extraTemplate>
+  <a>Add favorite</a>
+</ng-template>
