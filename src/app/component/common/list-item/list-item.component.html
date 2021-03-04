@@ -22,7 +22,10 @@
     <div *ngIf="isDataLoading" class="example">
       <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
     </div>
-    <nz-empty nzNotFoundImage="simple" nzNotFoundContent="No Author is found">
+
+    <nz-empty *ngIf="componentName === 'Authors'" nzNotFoundImage="simple" nzNotFoundContent="Loading..."></nz-empty>
+    <nz-empty *ngIf="componentName !== 'Authors'" nzNotFoundImage="simple"
+              nzNotFoundContent="No Favorite Author found">
     </nz-empty>
   </ng-template>
 
