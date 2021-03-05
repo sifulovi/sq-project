@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthorService} from '../../../service/author.service';
 import {AuthorModel} from '../../../model/author.model';
 import {NzNotificationService} from 'ng-zorro-antd/notification';
+import {PROJECT_CONSTANT} from '../../../@constant/assignment';
 
 @Component({
   selector: 'app-list-item',
@@ -12,6 +13,7 @@ export class ListItemComponent implements OnInit {
 
   @Input()
   componentName: string;
+  projectConstant = PROJECT_CONSTANT;
 
   authorList: AuthorModel[] = [];
   isDataLoading = true;
@@ -29,15 +31,6 @@ export class ListItemComponent implements OnInit {
     } else {
       this.favoriteAuthorList();
     }
-  }
-
-  addFavoriteAuthor(payload: AuthorModel): void {
-    this.isDataLoading = true;
-    this.authorService.addFavoriteAuthor(payload);
-    const message = ' A Author is added in favorite list!';
-    this.createNotification('success', message);
-    this.authorListData();
-
   }
 
   authorListData(): void {
@@ -68,11 +61,18 @@ export class ListItemComponent implements OnInit {
     console.log(`sfsdf ${data}`);
   }
 
+  addFavoriteAuthor(payload: AuthorModel): void {
+    this.isDataLoading = true;
+    this.authorService.addFavoriteAuthor(payload);
+    this.createNotification(this.projectConstant.MESSAGE.ADD_FAV.type, PROJECT_CONSTANT.MESSAGE.ADD_FAV.content);
+    this.authorListData();
+
+  }
+
   deleteFavoriteAuthor(payload: AuthorModel): void {
     this.authorService.deleteFavoriteAuthor(payload);
     this.ngOnInit();
-    const message = 'A Author is deleted from favorite list!';
-    this.createNotification('error', message);
+    this.createNotification(this.projectConstant.MESSAGE.DELETE_FAV.type, PROJECT_CONSTANT.MESSAGE.DELETE_FAV.content);
   }
 
   nextPage(): void {

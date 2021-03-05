@@ -21,17 +21,18 @@
       <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
     </div>
 
-    <nz-empty *ngIf="componentName === 'Authors'" nzNotFoundImage="simple" nzNotFoundContent="Loading..."></nz-empty>
-    <nz-empty *ngIf="componentName !== 'Authors'" nzNotFoundImage="simple"
+    <nz-empty *ngIf="componentName ===  projectConstant.ASSIGNMENT.AUTHOR" nzNotFoundImage="simple"
+              nzNotFoundContent="Loading..."></nz-empty>
+    <nz-empty *ngIf="componentName ==  projectConstant.ASSIGNMENT.FAV_AUTHOR" nzNotFoundImage="simple"
               nzNotFoundContent="No Favorite Author found">
     </nz-empty>
   </ng-template>
 
-  <div *ngIf="componentName=== 'Authors'" class="pagination">
-    <i (click)="previousPage()" nz-icon nzType="left" nzTheme="outline"></i>
+  <div *ngIf="componentName === projectConstant.ASSIGNMENT.AUTHOR" class="pagination">
+    <i class="pointer" (click)="previousPage()" nz-icon nzType="left" nzTheme="outline"></i>
     &nbsp;&nbsp;
     page :  {{pageNo}}
     &nbsp;&nbsp;
-    <i (click)="nextPage()" nz-icon nzType="right" nzTheme="outline"></i>
+    <i class="pointer" (click)="nextPage()" nz-icon nzType="right" nzTheme="outline"></i>
   </div>
 </nz-content>

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PROJECT_CONSTANT} from '../../../@constant/assignment';
 
 @Component({
   selector: 'app-favorite-author',
@@ -7,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class FavoriteAuthorComponent implements OnInit {
 
-  componentName = 'Favorite Authors';
+  componentName = PROJECT_CONSTANT.ASSIGNMENT.FAV_AUTHOR;
 
   constructor() {
   }
