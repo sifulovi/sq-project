@@ -8,8 +8,11 @@
       <p class="custom-link">For more details click <a href="{{author?.link}}" target='_blank'>here</a></p>
 
       <ng-template #extraTemplate>
-        <a (click)="addFavoriteAuthor(author)" *ngIf="!author.isFavorite ">Add favorite</a>
-        <a (click)="deleteFavoriteAuthor(author)" *ngIf="author.isFavorite">Remove</a>
+        <a (click)="addFavoriteAuthor(author)" *ngIf="!author.isFavorite ">
+          <i nz-icon nzType="heart" nzTheme="outline"></i>
+          Add favorite</a>
+        <a  style="color: red" (click)="deleteFavoriteAuthor(author)" *ngIf="author.isFavorite">
+          <i nz-icon nzType="heart" nzTheme="fill"></i> Remove favorite</a>
       </ng-template>
     </nz-card>
 
