@@ -66,7 +66,6 @@ export class ListItemComponent implements OnInit {
     this.authorService.addFavoriteAuthor(payload);
     this.createNotification(this.projectConstant.MESSAGE.ADD_FAV.type, PROJECT_CONSTANT.MESSAGE.ADD_FAV.content);
     this.authorListData();
-
   }
 
   deleteFavoriteAuthor(payload: AuthorModel): void {
