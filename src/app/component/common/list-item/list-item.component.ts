@@ -30,7 +30,7 @@ export class ListItemComponent implements OnInit {
     if (this.componentName === 'Authors') {
       this.authorListData();
     } else {
-      this.favoriteAuthorList()
+      this.favoriteAuthorList();
     }
   }
 
