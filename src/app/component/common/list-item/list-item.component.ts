@@ -13,12 +13,12 @@ export class ListItemComponent implements OnInit {
 
   @Input()
   componentName: string;
-  projectConstant = PROJECT_CONSTANT;
 
+  pageNo                    = 0;
   authorList: AuthorModel[] = [];
-  isDataLoading = true;
-  pageNo = 0;
-  showPagnation = false;
+  isDataLoading             = true;
+  showPagination            = false;
+  projectConstant           = PROJECT_CONSTANT;
 
   constructor(
     private authorService: AuthorService,
@@ -30,7 +30,7 @@ export class ListItemComponent implements OnInit {
     if (this.componentName === 'Authors') {
       this.authorListData();
     } else {
-      this.favoriteAuthorList();
+      setTimeout(() => this.favoriteAuthorList(), 1000);
     }
   }
 
@@ -54,7 +54,7 @@ export class ListItemComponent implements OnInit {
         this.isDataLoading = false;
       },
       () => {
-        this.showPagnation = true;
+        this.showPagination = true;
         console.log('complete!');
       }
     );
