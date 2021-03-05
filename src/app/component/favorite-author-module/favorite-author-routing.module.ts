@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {ListItemComponent} from '../common/list-item/list-item.component';
+import {RouterModule, Routes} from '@angular/router';
 import {FavoriteAuthorComponent} from './favorite-author/favorite-author.component';
 
 const routes: Routes = [
