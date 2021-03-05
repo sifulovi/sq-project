@@ -11,8 +11,6 @@ export const PROJECT_CONSTANT = {
     DELETE_FAV: {
       content: 'A Author is deleted from favorite list!',
       type: 'warning'
-
     }
-
   }
 };
