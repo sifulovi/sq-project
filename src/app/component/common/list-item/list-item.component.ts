@@ -18,6 +18,7 @@ export class ListItemComponent implements OnInit {
   authorList: AuthorModel[] = [];
   isDataLoading = true;
   pageNo = 0;
+  showPagnation = false;
 
   constructor(
     private authorService: AuthorService,
@@ -51,6 +52,10 @@ export class ListItemComponent implements OnInit {
       },
       () => {
         this.isDataLoading = false;
+      },
+      () => {
+        this.showPagnation = true;
+        console.log('complete!');
       }
     );
   }

@@ -11,7 +11,7 @@
         <a (click)="addFavoriteAuthor(author)" *ngIf="!author.isFavorite ">
           <i nz-icon nzType="heart" nzTheme="outline"></i>
           Add favorite</a>
-        <a  style="color: red" (click)="deleteFavoriteAuthor(author)" *ngIf="author.isFavorite">
+        <a style="color: red" (click)="deleteFavoriteAuthor(author)" *ngIf="author.isFavorite">
           <i nz-icon nzType="heart" nzTheme="fill"></i> Remove favorite</a>
       </ng-template>
     </nz-card>
@@ -31,7 +31,7 @@
     </nz-empty>
   </ng-template>
 
-  <div *ngIf="componentName === projectConstant.ASSIGNMENT.AUTHOR" class="pagination">
+  <div *ngIf="componentName === projectConstant.ASSIGNMENT.AUTHOR && showPagnation" class="pagination">
     <i class="pointer" (click)="previousPage()" nz-icon nzType="left" nzTheme="outline"></i>
     &nbsp;&nbsp;
     page :  {{pageNo}}
